@@ -2,6 +2,7 @@ node_modules/
 .svelte-kit/
 build/
 dist/
+.vercel/
 dirsa.db
 static/uploads/
 .env
