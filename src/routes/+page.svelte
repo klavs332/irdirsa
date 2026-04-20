@@ -64,9 +64,12 @@
   $: visitorCount = data.visitorCount ?? 0;
 
   onMount(() => {
-    const es = new EventSource('/api/live');
-    es.onmessage = (e) => { liveViewers = Number(e.data); };
-    return () => es.close();
+    try {
+      const es = new EventSource('/api/live');
+      es.onmessage = (e) => { liveViewers = Number(e.data); };
+      es.onerror = () => es.close();
+      return () => es.close();
+    } catch {}
   });
 
   $: user = data.user;

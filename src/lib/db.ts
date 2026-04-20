@@ -1,7 +1,9 @@
 import { createClient } from '@libsql/client';
 import { join } from 'path';
 
-const db = createClient({ url: `file:${join(process.cwd(), 'dirsa.db')}` });
+const url = process.env.TURSO_URL ?? `file:${join(process.cwd(), 'dirsa.db')}`;
+const authToken = process.env.TURSO_TOKEN;
+const db = createClient({ url, authToken });
 
 export async function initDb() {
   await db.executeMultiple(`
