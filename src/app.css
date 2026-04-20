@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+}
+
+@layer components {
+  .card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.048) 0%, rgba(255,255,255,0.016) 100%);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 24px;
+    padding: 24px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .card:hover {
+    border-color: rgba(255,255,255,0.14);
+    box-shadow: 0 2px 0 rgba(255,255,255,0.04) inset, 0 0 0 1px rgba(249,115,22,0.07), 0 24px 80px rgba(0,0,0,0.4);
+  }
+
+  .vote-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 8px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex: 1;
+    min-width: 0;
+    user-select: none;
+    background: rgba(255,255,255,0.02);
+  }
+  .vote-btn .vote-emoji { font-size: 28px; line-height: 1; }
+  .vote-btn .vote-label { font-size: 10px; line-height: 1.2; }
+  .vote-btn:hover {
+    border-color: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.85);
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .vote-btn.active {
+    border-color: rgba(249,115,22,0.6);
+    background: rgba(249,115,22,0.1);
+    color: rgb(253,186,116);
+    box-shadow: 0 0 20px rgba(249,115,22,0.18), 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .vote-btn:active { transform: translateY(0) scale(0.97); }
+
+  .input-field {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-size: 15px;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+  .input-field::placeholder { color: rgba(255,255,255,0.2); }
+  .input-field:focus {
+    border-color: rgba(249,115,22,0.5);
+    background: rgba(255,255,255,0.055);
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #f97316, #e55b00);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 11px 22px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.01em;
+    box-shadow: 0 2px 12px rgba(249,115,22,0.25);
+  }
+  .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(249,115,22,0.35); }
+  .btn-primary:active { transform: scale(0.98); box-shadow: none; }
+  .btn-primary:disabled { opacity: 0.38; cursor: default; transform: none; box-shadow: none; }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.09);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.14); }
+
+  .tag-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.08);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tag-badge:hover { background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.75); }
+  .tag-badge.active {
+    background: rgba(249,115,22,0.14);
+    border-color: rgba(249,115,22,0.42);
+    color: rgb(253,186,116);
+  }
+
+  .engage-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.42);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .engage-btn:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.14); }
+  .engage-btn.active-green {
+    border-color: rgba(16,185,129,0.45);
+    background: rgba(16,185,129,0.08);
+    color: rgb(110,231,183);
+  }
+  .engage-btn.active-orange {
+    border-color: rgba(249,115,22,0.4);
+    background: rgba(249,115,22,0.08);
+    color: rgb(253,186,116);
+  }
+
+  .score-bar {
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.07);
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #22c55e, #eab308, #f97316, #ef4444, #991b1b);
+    transition: width 0.4s ease;
+  }
+
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+  .filter-btn.active {
+    border-color: rgba(249,115,22,0.5);
+    background: rgba(249,115,22,0.12);
+    color: rgb(253,186,116);
+  }
+}
+
+@media (max-width: 500px) {
+  .card { padding: 18px; border-radius: 20px; }
+  .vote-btn { padding: 10px 4px; }
+  .vote-btn .vote-emoji { font-size: 24px; }
+  .vote-btn .vote-label { display: none; }
+  .btn-primary { padding: 11px 18px; }
+  .btn-ghost { padding: 9px 13px; }
+}

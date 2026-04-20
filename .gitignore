@@ -1,0 +1,10 @@
+node_modules/
+.svelte-kit/
+build/
+dist/
+dirsa.db
+static/uploads/
+.env
+.env.*
+*.db-shm
+*.db-wal
